@@ -116,3 +116,79 @@ function gameObject() {
     };
 }
 console.log(gameObject());
+
+//numPointsScored that takes in an argument of a player's name and returns the number of points scored for that player.
+function numPointsScored(playerName) {
+    const game = gameObject();
+    for (let teamKey in game) {
+        const team = game[teamKey];
+        for (let player in team.players) {
+            if (player === playerName) {
+                return team.players[player].points;
+            }
+        }
+    }
+}
+console.log(numPointsScored("Jeff Adrein")); // Got 10
+
+//shoeSize, that takes in an argument of a player's name and returns the shoe size for that player.
+function shoeSize(playerName) {
+    const game = gameObject();
+    for (let teamKey in game) {
+        const team = game[teamKey];
+        for (let player in team.players) {
+            if (player === playerName) {
+                return team.players[player].shoe;
+            }
+        }
+    }
+}
+
+//teamColors, that takes in an argument of the team name and returns an array of that teams colors.
+function teamColors(teamName) {
+    const game = gameObject();
+    for (let teamKey in game) {
+        const team = game[teamKey];
+        if (team.teamName === teamName) {
+            return team.colors;
+        }
+    }
+}
+
+//teamNames, that operates on the game object to return an array of the team names
+function teamNames() {
+    const game = gameObject();
+    const names = [];
+    for (let teamKey in game) {
+        names.push(game[teamKey].teamName);
+    }
+    return names;
+}
+
+//playerNumbers, that takes in an argument of a team name and returns an array of the jersey numbers for that team.
+function playerNumbers(teamName) {
+    const game = gameObject();
+    const numbers = [];
+    for (let teamKey in game) {
+        const team = game[teamKey];
+        if (team.teamName === teamName) {
+            for (let player in team.players) {
+                numbers.push(team.players[player].number);
+            }
+        }
+    }
+    return numbers;
+}
+
+//playerStats, that takes in an argument of a player's name and returns an object of that player's stats. 
+function playerStats(playerName) {
+    const game = gameObject();
+    for (let teamKey in game) {
+        const team = game[teamKey];
+        for (let player in team.players) {
+            if (player === playerName) {
+                return team.players[player];
+            }
+        }
+    }
+}
